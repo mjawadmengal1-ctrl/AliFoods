@@ -1,0 +1,9 @@
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { Screen } from '@/components/layout/Screen';
+import { ProductCard } from '@/components/feature/ProductCard';
+import { useRestaurant } from '@/hooks/useRestaurant';
+import { useResponsive } from '@/hooks/useResponsive';
+import { colors, radii, spacing } from '@/constants/theme';
+export default function DealsPage() { const { data } = useRestaurant(); const { columns } = useResponsive(); return <Screen tabs title="Ali Foods Special Deals" subtitle="A little more food. A lot more flavour."><FlatList key={columns} numColumns={columns} data={data.products.filter(p => p.categoryId === 'deals')} keyExtractor={p => p.id} renderItem={({ item }) => <ProductCard product={item} />} showsVerticalScrollIndicator={false} contentContainerStyle={styles.content} ListHeaderComponent={<View style={styles.hero}><View style={styles.tag}><Ionicons name="pricetag-outline" size={16} color={colors.ink} /><Text style={styles.tagText}>FROM OUR ORIGINAL MENU</Text></View><Text style={styles.title}>Made for sharing.</Text><Text style={styles.subtitle}>Crispy wings, shawarma and your favourite rolls. Bring your appetite.</Text><View style={styles.rule} /></View>} /></Screen>; }
+const styles = StyleSheet.create({ content: { paddingHorizontal: spacing.lg, paddingBottom: spacing.xl }, hero: { padding: spacing.lg, backgroundColor: colors.yellow, borderRadius: radii.md, marginBottom: spacing.lg, gap: spacing.md }, tag: { flexDirection: 'row', alignItems: 'center', gap: 8 }, tagText: { fontSize: 10, fontWeight: '800', letterSpacing: 1, color: colors.ink }, title: { color: colors.ink, fontSize: 30, fontWeight: '900', letterSpacing: -1 }, subtitle: { fontSize: 16, color: colors.dark, lineHeight: 25 }, rule: { height: 4, width: 48, borderRadius: 2, backgroundColor: colors.primary } });

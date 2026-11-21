@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "name": "Ali Foods",
+    "slug": "ali-foods",
+    "version": "1.0.0",
+    "orientation": "default",
+    "scheme": "alifoods",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "ios": { "supportsTablet": true },
+    "android": { "package": "com.alifoods.ordering", "edgeToEdgeEnabled": true },
+    "web": { "bundler": "metro", "output": "static" },
+    "plugins": [
+      "expo-router",
+      ["expo-splash-screen", { "backgroundColor": "#FFF9F3" }],
+      "expo-web-browser",
+      ["expo-image-picker", { "photosPermission": "Allow Ali Foods to select restaurant and menu photos." }]
+    ],
+    "experiments": { "typedRoutes": true }
+  }
+}
